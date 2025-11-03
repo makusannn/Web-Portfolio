@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[#231f16] text-white overflow-x-hidden;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body, section {
+  background-color: #231f16; /* consistent dark color */
+}
+
+section {
+  scroll-margin-top: 80px; /* adjust based on your navbar height */
+}
+
+.glow {
+  box-shadow: 0 0 15px var(--accent);
+}
+
+/* --- Navbar semantic classes (used by your Navbar.jsx) --- */
+.background-overlay {
+  /* place a decorative background image if you have one in public/ (optional) */
+  background-image: url('/spiderweb.png');
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 28rem;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -10;
+}
+
+/* navbar wrapper (fixed at top) */
+.navbar-wrapper,
+.navbar-container {
+  /* keep these synonyms safe if you used navbar-container in JSX */
+  @apply fixed top-0 left-0 w-full z-50;
+}
+
+/* navbar inner content */
+.navbar-content {
+  @apply flex items-center justify-between; /* ensure logo stays to the left */
+}
+
+.navbar-content,
+.navbar-inner {
+  @apply w-full px-6 md:px-8 lg:px-12 py-4 flex items-center justify-between
+         backdrop-blur bg-[#231f16]/60 border-b border-white/5 
+         shadow-[0_4px_200px_rgba(0,0,0,1)];
+}
+
+/* logo sizing */
+.navbar-logo img,
+.navbar-logo .logo-img {
+  @apply h-25 w-auto;
+}
+
+/* desktop nav links */
+.navbar-links,
+.navbar-links a,
+nav.hidden.md\:flex {
+  @apply hidden md:flex gap-10 items-center;
+}
+
+nav.hidden.md\:flex a, .navbar-links a {
+  @apply text-slate-200 text-lg transition-all duration-200;
+}
+
+nav.hidden.md\:flex a:hover, .navbar-links a:hover {
+  @apply text-[#e97216] font-bold;
+}
+
+/* mobile menu styles */
+.navbar-mobile-button, .navbar-mobile {
+  @apply md:hidden;
+}
+
+/* overlay & mobile panel */
+.navbar-overlay {
+  @apply md:hidden fixed inset-0 z-40 transition-opacity duration-300;
+}
+.navbar-panel {
+  @apply absolute top-0 left-0 right-0 bg-[#1e1a12] px-6 pt-6 pb-8 transform transition-transform duration-300;
+}
+
+/* small utility for main sections so scrolling is visible */
+section {
+  @apply w-full py-20 md:py-32;
+}
+
+a.glow-btn {
+  @apply inline-block bg-[#e97216] text-white font-semibold text-lg px-8 py-3 rounded-full transition-all duration-300;
+}
+a.glow-btn:hover {
+  background-color: #ff8c32;
+  box-shadow: 0 0 20px #ff8c32;
+}
+
+/* Glow pulse animation */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 10px #ff8c32, 0 0 20px #ff8c32;
+  }
+  50% {
+    box-shadow: 0 0 25px #ff8c32, 0 0 40px #e97216;
+  }
+  100% {
+    box-shadow: 0 0 10px #ff8c32, 0 0 20px #ff8c32;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #e97216;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-track {
+  background-color: #1a1814;
+}
+
+@keyframes slowFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
