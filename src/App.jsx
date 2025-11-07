@@ -28,7 +28,6 @@ export default function App() {
         <footer className="w-full text-center py-6 bg-[#231f16] text-gray-400 text-sm border-t border-gray-700">
           © {new Date().getFullYear()} Mary Strelline Magdamit. All rights reserved.
         </footer>
-
       </main>
     </div>
   );

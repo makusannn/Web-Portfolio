@@ -6,10 +6,18 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        border: "var(--border)",
+        ring: "var(--ring)",
+      },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-animate")
+  ],
 };

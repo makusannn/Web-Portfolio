@@ -40,7 +40,7 @@ export default function Projects() {
             image: project4,
             title: "QueuePoint: A Digital Queueing System for Campus Registrar Transactions",
             description:
-                "A web-based digital queueing system designed to help student transactions at Cavite State University–Bacoor Campus. QueuePoint allows users to register remotely, track real-time queue updates, and manage requests efficiently, reducing wait times and improving service flow in the Registrar’s Office.",
+                "A web-based digital queueing system that lets students register remotely, track real-time queue updates, and manage requests to reduce wait times and improve service flow in the Registrar’s Office.",
             tools: ["HTML", "CSS", "MySQL", "PHP"],
             github: "https://github.com/TheElusiveCherryTreeOf89/COSC70-QueuePoint-Project", //the project was uploaded by our Project Manager during this time
             docs: "/Queueing-System_Docs.pdf",
@@ -75,7 +75,7 @@ export default function Projects() {
         <section id="projects" className="relative flex flex-col items-center justify-center min-h-screen px-4 md:px-20 py-20 text-white overflow-hidden">
             {/*title*/}
             <motion.h2
-                className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-10 md:mb-25"
+                className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-20 md:mb-25"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
@@ -135,7 +135,7 @@ export default function Projects() {
                                 key={index}
                                 className={`absolute flex flex-col items-center text-center rounded-2xl 
                                 p-4 sm:p-6 md:p-10 bg-[#1e1a12]/80 backdrop-blur-md 
-                                transition-[transform,opacity] duration-[1000ms] ease-[cubic-bezier(0.4,0,0.2,1)] 
+                                transition-[transform,opacity] duration-1000 ease-[cubic-bezier(0.4,0,0.2,1)] 
                                 ${shadow}`}
                                 style={{
                                 transform: `translateX(${translateX}px) scale(${scale})`,
@@ -211,7 +211,7 @@ export default function Projects() {
             </div>
 
             {/*tracking dots*/}
-            <div className="flex justify-center mt-10 md:mt-12 space-x-3">
+            <div className="flex justify-center mt-20 md:mt-12 space-x-3">
                 {projects.map((_, index) => (
                     <div
                         key={index}

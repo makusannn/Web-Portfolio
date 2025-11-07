@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-@import "tailwindcss";
-@plugin "tailwindcss-animate";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html{
   scroll-behavior: smooth;
@@ -15,7 +13,7 @@ body {
   margin: 0;
   padding: 0;
 }
-//global bg color
+
 body, section {
   background-color: #231f16; 
 }
@@ -51,8 +49,18 @@ section {
 
 .navbar-links,
 .navbar-links a,
-nav.hidden.md\:flex {
-  @apply hidden md:flex gap-10 items-center;
+nav.md\:flex {
+  display: none; /* instead of @apply hidden */
+}
+
+@media (min-width: 768px) {
+  .navbar-links,
+  .navbar-links a,
+  nav.md\:flex {
+    display: flex;
+    gap: 2.5rem; /* equivalent to gap-10 */
+    align-items: center;
+  }
 }
 
 nav.hidden.md\:flex a, .navbar-links a {
@@ -74,7 +82,6 @@ nav.hidden.md\:flex a:hover, .navbar-links a:hover {
   @apply absolute top-0 left-0 right-0 bg-[#1e1a12] px-6 pt-6 pb-8 transform transition-transform duration-300;
 }
 
-//content
 section {
   @apply w-full py-20 md:py-32;
 }
@@ -87,7 +94,6 @@ a.glow-btn:hover {
   box-shadow: 0 0 20px #ff8c32;
 }
 
-//glow animation 
 @keyframes pulseGlow {
   0% {
     box-shadow: 0 0 10px #ff8c32, 0 0 20px #ff8c32;
@@ -140,44 +146,6 @@ a.glow-btn:hover {
 
 .animate-float {
   animation: float 4s ease-in-out infinite;
-}
-
-@theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root {
@@ -251,9 +219,11 @@ a.glow-btn:hover {
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--border);
+    outline-color: rgb(255 255 255 / 0.5); /* 50% white outline */
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }

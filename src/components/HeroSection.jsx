@@ -13,12 +13,12 @@ export default function HeroSection() {
       <img
         src={leftWeb}
         alt="Left Spider Web"
-        className="fixed top-30 left-0 w-100 opacity-70 z-[1] select-none pointer-events-none"
+        className="fixed top-10 left-0 w-100 opacity-70 z-[1] select-none pointer-events-none"
       />
       <img
         src={rightWeb}
         alt="Right Spider Web"
-        className="fixed top-30 right-0 w-120 opacity-70 z-[1] select-none pointer-events-none"
+        className="fixed top-10 right-0 w-120 opacity-70 z-[1] select-none pointer-events-none"
       />
 
       <div className="z-10 text-center md:text-left md:w-1/2 space-y-6 md:pl-16 lg:pl-24 md:-mt-30">
