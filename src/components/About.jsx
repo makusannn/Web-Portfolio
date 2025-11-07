@@ -1,16 +1,24 @@
-import React from 'react'
-import myPhoto from '../assets/my-photo.jpg'
+import React from "react";
+import { motion } from "framer-motion";
+import { fadeUp, fadeContainer } from "../motionVariants";
+import myPhoto from "../assets/my-photo.jpg";
+import { Button } from "@/components/ui/button";
 
 export default function About() {
   return (
-    <section
-      id="about"
+    <section id="about"
       className="relative flex flex-col items-center justify-center min-h-screen px-6 md:px-20 text-white"
     >
-      {/* Image + Text side by side */}
-      <div className="z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-7xl gap-5 mt-10">
-        {/* About Texts (Now on the LEFT) */}
-        <div className="max-w-2xl text-left md:w-1/2">
+      {/*fade up animation using Framer Motion*/}
+      <motion.div
+        variants={fadeContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-7xl gap-5 mt-10"
+      >
+        {/*texts fade up animation*/}
+        <motion.div variants={fadeUp} className="max-w-2xl text-left md:w-1/2">
           <h2 className="text-5xl font-extrabold text-white mb-6">About Me</h2>
           <p className="text-gray-200 text-lg md:text-xl text-justify leading-relaxed">
             Hello! I’m <span className="text-[#ffb347] font-semibold">Mary Strelline Magdamit</span>, 
@@ -18,49 +26,65 @@ export default function About() {
             crafting visually engaging and interactive web designs. Born on <span className="text-[#ffb347] font-semibold">February 20, 2005 </span> 
             and based in <span className="text-[#ffb347] font-semibold">Las Piñas City</span>. I’ve always been fascinated by how creativity and technology 
             can blend to tell stories through design.
-            <br /><br />
+            <br/><br/>
             I enjoy experimenting with <span className="text-[#ffb347] font-semibold">seasonal and thematic layouts</span>, turning simple concepts into 
             aesthetic experiences that reflect emotion, color, and personality. 
-            <br /><br />
+            <br/><br/>
             Beyond coding, you'll often find me <span className="text-[#ffb347] font-semibold">drawing traditionally, specifically portrait arts, and designing digitally. </span> 
             I am a very artistic type of person but I am also quite the minimalist type as I do not use much colors. You'll also find me exploring UI trends and learning new front-end tools.
-            <br /><br />
+            <br/><br/>
             My goal is to keep growing as a designer and developer who creates not just websites, but digital experiences that connect 
             creativity and functionality — all while leaving a hint of my personal style in every detail.
           </p>
 
-          <a
-            href="#projects"
-            className="inline-block mt-8 bg-[#e97216] hover:bg-[#ff8c32] text-white font-semibold 
-                       py-3 px-8 rounded-full transition-transform transform hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(233,114,22,0.4)]"
+          {/*shadcn button*/}
+          <Button asChild
+            className="mt-10 bg-[#e97216] hover:bg-[#ff8c32] text-white font-semibold text-lg py-6 px-8 
+              rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]"
           >
-            View My Resume
-          </a>
-        </div>
+            <a href="/Mary-Strelline-Magdamit_Resume.pdf" target="_blank" rel="noopener noreferrer">
+              View My Resume
+            </a>
+          </Button>
+        </motion.div>
 
-        {/* Floating Image (Now on the RIGHT) */}
-        <div className="relative group flex justify-center md:justify-end w-full md:w-1/2">
+        {/*image fade up and floating animation*/}
+        <motion.div
+          variants={fadeUp}
+          className="relative group flex justify-center md:justify-end w-full md:w-1/2 mt-10"
+        >
           <img
             src={myPhoto}
             alt="Mary Strelline"
-            className="w-72 h-72 md:w-96 md:h-96 object-cover
+            className="w-72 h-72 md:w-96 md:h-96 object-cover rounded-full
                        shadow-[0_0_50px_15px_rgba(255,204,51,0.6),0_0_120px_60px_rgba(255,204,51,0.25)]
-                       animate-float transition-transform duration-500 ease-in-out group-hover:-translate-y-3"
+                       animate-float transition-transform duration-500 ease-in-out group-hover:-translate-y-5"
           />
-          {/* Glowing Light Beneath */}
+          {/*glowing light behind the image*/}
           <div
             className="absolute bottom-[-80px] left-1/2 -translate-x-1/2 
                        w-56 h-12 bg-[radial-gradient(circle,rgba(255,204,51,0.8),transparent_70%)] 
                        blur-3xl opacity-90 group-hover:opacity-100 transition-all duration-500"
           ></div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      {/* Languages & Frameworks Section */}
-      <div className="mt-24 text-center z-10 max-w-6xl">
-        <h3 className="text-2xl font-semibold mb-4 text-white">Proficient In:</h3>
+      {/*boxes fade up animation*/}
+      <motion.div
+        variants={fadeContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="mt-24 text-center z-10 max-w-6xl"
+      >
+        <motion.h3 variants={fadeUp} className="text-2xl font-semibold mb-4 text-white">
+          Proficient In:
+        </motion.h3>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
+        <motion.div
+          variants={fadeUp}
+          className="flex flex-wrap justify-center gap-3 mb-10"
+        >
           {['HTML', 'CSS', 'MySQL', 'Figma', 'Python', 'Java'].map((skill) => (
             <span
               key={skill}
@@ -72,11 +96,16 @@ export default function About() {
               {skill}
             </span>
           ))}
-        </div>
+        </motion.div>
 
-        <h3 className="text-2xl font-semibold mb-4 text-white">Currently Exploring:</h3>
+        <motion.h3 variants={fadeUp} className="text-2xl font-semibold mb-4 text-white">
+          Currently Exploring:
+        </motion.h3>
 
-        <div className="flex flex-wrap justify-center gap-3 md:gap-4 w-full max-w-[90rem] mx-auto px-2">
+        <motion.div
+          variants={fadeUp}
+          className="flex flex-wrap justify-center gap-3 md:gap-4 w-full max-w-[90rem] mx-auto px-2"
+        >
           {['MongoDB', 'Tailwind CSS', 'Node.js', 'React.js', 'JavaScript', 'PHP'].map((skill) => (
             <span
               key={skill}
@@ -89,8 +118,8 @@ export default function About() {
               {skill}
             </span>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   )
 }

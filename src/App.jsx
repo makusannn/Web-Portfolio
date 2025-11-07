@@ -1,33 +1,34 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import HeroSection from './components/HeroSection'
-import About from './components/About'
-import Contact from './components/Contact'
+import React from "react";
+import Navbar from "./components/Navbar";
+import HeroSection from "./components/HeroSection";
+import About from "./components/About";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
 
 export default function App() {
   return (
     <div className="app-root">
+      {/*navigation bar section */}
       <Navbar />
 
-      {/* main content has top padding so fixed navbar won't cover it */}
+      {/*top padding so fixed navbar won't cover it*/}
       <main className="pt-24">
-        {/* hero section */}
+        {/*hero section*/}
         <HeroSection />
 
-        {/* about section */}
+        {/*about section*/}
         <About />
 
-        <section id="projects" className="min-h-screen flex items-center justify-center">
-          <div className="max-w-4xl px-6 text-center text-white">
-            <h2 className="text-3xl font-semibold">Projects</h2>
-            <p className="mt-3 text-slate-300">
-              Here are some of the projects I’ve worked on — combining design, functionality, and user experience.
-            </p>
-          </div>
-        </section>
+        {/*projects section*/}
+        <Projects />
 
-        {/* contact section */}
+        {/*contact section*/}
         <Contact /> 
+
+        <footer className="w-full text-center py-6 bg-[#231f16] text-gray-400 text-sm border-t border-gray-700">
+          © {new Date().getFullYear()} Mary Strelline Magdamit. All rights reserved.
+        </footer>
+
       </main>
     </div>
   );
